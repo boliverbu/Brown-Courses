@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "@/styles/App.css";
 import { CourseSearchPage } from "./CourseSearchPage";
+import { Analytics } from "@vercel/analytics/next";
 
 /**
  * This is the highest level of the Course Recommendation Application

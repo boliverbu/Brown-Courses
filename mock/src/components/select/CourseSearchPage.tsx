@@ -139,9 +139,7 @@ export function CourseSearchPage() {
         {!submittedBlurb && courses.length === 0 && !loading && (
           <div className="example-message" aria-label="Example blurb">
             <p>
-              <em>
-                Try typing something like: "I want a class on chill ECON Class"
-              </em>
+              <em>Try typing something like: "I want an Economics Class"</em>
             </p>
           </div>
         )}
