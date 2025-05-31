@@ -7,7 +7,6 @@ import "../../styles/main.css";
 // Import child components and mock data
 import { BlurbInput } from "./BlurbInput";
 import { CourseResults } from "./CourseResults";
-import { mockCourses } from "../../mocks/mockedData";
 
 // Define the structure of a Course object to ensure strong typing across components
 export interface Course {
@@ -39,7 +38,6 @@ export function CourseSearchPage() {
       if (useMockData) {
         // Simulate backend delay and use mock data
         await new Promise((res) => setTimeout(res, 1000));
-        setCourses(mockCourses);
       } else {
         // Make POST request to FastAPI ML backend
         const response = await fetch("http://127.0.0.1:8000/score", {
@@ -70,7 +68,6 @@ export function CourseSearchPage() {
     } catch (err) {
       console.error("Error fetching results:", err);
       setError("Server error. Showing fallback mock data.");
-      setCourses(mockCourses); // Use mock data as fallback
     } finally {
       setLoading(false); // End loading state
     }
@@ -82,7 +79,6 @@ export function CourseSearchPage() {
     setCourses([]);
     setError(null);
     setLoading(false);
-    setInputError(null);
   };
 
   // JSX to render the UI
