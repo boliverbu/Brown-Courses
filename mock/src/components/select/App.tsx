@@ -15,6 +15,7 @@ function App() {
         </h1>
       </div>
       <CourseSearchPage />
+      <Analytics />
     </div>
   );
 }
