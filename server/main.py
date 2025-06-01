@@ -1,7 +1,7 @@
 from typing import List
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
+from pydantic import BaseModel 
 from data import get_all_courses
 from scoring import score_tfidf, score_semantic, score_combined
 
@@ -26,10 +26,11 @@ class ScoreResponse(BaseModel):
 
 app = FastAPI()
 
+origins = ["http://localhost:8000", "https://brown-courses.vercel.app/"]
 # CORS setup
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:8000"],
+    allow_origins=origins,
     allow_methods=["*"],
     allow_headers=["*"],
 )
