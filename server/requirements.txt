@@ -1,5 +1,5 @@
 fastapi
 uvicorn
 scikit-learn
-torch==2.1.0+cpu -f https://download.pytorch.org/whl/torch-stable.html
 sentence-transformers
+torch==2.1.0
