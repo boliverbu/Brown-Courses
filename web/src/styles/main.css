@@ -1,0 +1,25 @@
+/* CSS for Main Select interface */
+
+.select {
+  position: relative;
+  min-height: 95vh;
+}
+
+.select-history {
+  height: 55vh;
+  margin: auto;
+  display: block;
+  overflow: scroll;
+}
+
+.dropdown {
+  width: 10vw;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.dropdown > option {
+  text-align: center;
+}
+
+/** TODO 3: change the CSS on the submit button to ensure it's centered! **/

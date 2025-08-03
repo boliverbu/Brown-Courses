@@ -1,0 +1,17 @@
+/* [project]/src/styles/App.css [app-client] (css) */
+.App {
+  text-align: center;
+}
+
+.App-header {
+  color: #fff;
+  background-color: #282c34;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 8vh;
+  font-size: calc(1px + 2vmin);
+  display: flex;
+}
+
+/*# sourceMappingURL=src_styles_App_css_e59ae46c._.single.css.map*/

@@ -19,3 +19,6 @@ playwright/.cache/
 
 # mac
 .DS_Store
+
+.env
+vertex-key.json

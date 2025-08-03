@@ -1,0 +1,24 @@
+/* [project]/src/styles/main.css [app-client] (css) */
+.select {
+  min-height: 95vh;
+  position: relative;
+}
+
+.select-history {
+  height: 55vh;
+  margin: auto;
+  display: block;
+  overflow: scroll;
+}
+
+.dropdown {
+  cursor: pointer;
+  width: 10vw;
+  margin: 10px;
+}
+
+.dropdown > option {
+  text-align: center;
+}
+
+/*# sourceMappingURL=src_styles_main_css_e59ae46c._.single.css.map*/
