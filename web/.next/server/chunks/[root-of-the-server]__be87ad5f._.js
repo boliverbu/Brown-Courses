@@ -227,7 +227,11 @@ const GEMINI_MODEL = process.env.GEMINI_MODEL;
 const VERTEX_KEY_PATH = process.env.VERTEX_KEY_PATH;
 async function getGeminiAccessToken() {
     const auth = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$google$2d$auth$2d$library$2f$build$2f$src$2f$index$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["GoogleAuth"]({
-        keyFile: VERTEX_KEY_PATH,
+        credentials: {
+            client_email: process.env.GCP_SERVICE_ACCOUNT_EMAIL,
+            private_key: process.env.GCP_PRIVATE_KEY?.replace(/\\n/g, "\n")
+        },
+        projectId: process.env.GCP_PROJECT_ID,
         scopes: "https://www.googleapis.com/auth/cloud-platform"
     });
     const client = await auth.getClient();

@@ -15,7 +15,11 @@ const VERTEX_KEY_PATH = process.env.VERTEX_KEY_PATH!;
 
 async function getGeminiAccessToken() {
   const auth = new GoogleAuth({
-    keyFile: VERTEX_KEY_PATH,
+    credentials: {
+      client_email: process.env.GCP_SERVICE_ACCOUNT_EMAIL,
+      private_key: process.env.GCP_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+    },
+    projectId: process.env.GCP_PROJECT_ID,
     scopes: "https://www.googleapis.com/auth/cloud-platform",
   });
   const client = await auth.getClient();
