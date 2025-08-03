@@ -14,7 +14,6 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var _s = __turbopack_context__.k.signature();
 "use client";
 ;
-;
 function BlurbInput(param) {
     let { onSubmit } = param;
     _s();
@@ -26,11 +25,11 @@ function BlurbInput(param) {
         }
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "input-container",
+        className: "flex flex-col gap-4 items-center w-full max-w-xl mx-auto mt-6",
         "aria-live": "polite",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
-                className: "input-textarea",
+                className: "w-full rounded-lg border border-neutral-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 p-4 text-base resize-none shadow-sm transition outline-none",
                 value: inputValue,
                 onChange: (e)=>setInputValue(e.target.value),
                 placeholder: "Describe the vibe, topics, or structure you're looking for...",
@@ -38,23 +37,24 @@ function BlurbInput(param) {
                 rows: 4
             }, void 0, false, {
                 fileName: "[project]/src/components/BlurbInput.tsx",
-                lineNumber: 21,
+                lineNumber: 23,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                className: "submit-button",
+                className: "bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-lg shadow transition disabled:opacity-50 disabled:cursor-not-allowed",
                 onClick: handleSubmit,
                 "aria-label": "Submit course blurb",
+                disabled: inputValue.trim() === "",
                 children: "Find Courses"
             }, void 0, false, {
                 fileName: "[project]/src/components/BlurbInput.tsx",
-                lineNumber: 29,
+                lineNumber: 31,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/BlurbInput.tsx",
-        lineNumber: 20,
+        lineNumber: 19,
         columnNumber: 5
     }, this);
 }
@@ -76,57 +76,56 @@ __turbopack_context__.s({
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 ;
-;
 function CourseResults(param) {
     let { courses } = param;
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "results-container",
+        className: "mt-8 grid gap-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5",
         "aria-label": "recommended courses",
         children: courses.length === 0 ? null : courses.map((course, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "course-card",
+                className: "bg-white border border-neutral-200 rounded-xl shadow-sm p-6 flex flex-col gap-2 hover:shadow-md transition",
                 "aria-label": "Recommended course ".concat(index + 1),
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                        className: "course-title",
+                        className: "text-lg font-bold text-neutral-900 mb-1",
                         children: course.title
-                    }, void 0, false, {
-                        fileName: "[project]/src/components/CourseResults.tsx",
-                        lineNumber: 19,
-                        columnNumber: 15
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
-                        className: "course-id text-sm text-gray-500",
-                        children: course.id
-                    }, void 0, false, {
-                        fileName: "[project]/src/components/CourseResults.tsx",
-                        lineNumber: 20,
-                        columnNumber: 15
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                        className: "course-department",
-                        children: course.department
                     }, void 0, false, {
                         fileName: "[project]/src/components/CourseResults.tsx",
                         lineNumber: 21,
                         columnNumber: 15
                     }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                        className: "text-xs text-neutral-500 font-mono",
+                        children: course.id
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/CourseResults.tsx",
+                        lineNumber: 24,
+                        columnNumber: 15
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                        className: "text-sm text-blue-700 font-semibold mb-1",
+                        children: course.department
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/CourseResults.tsx",
+                        lineNumber: 27,
+                        columnNumber: 15
+                    }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "course-description",
+                        className: "text-neutral-700 text-sm",
                         children: course.description || "No description available."
                     }, void 0, false, {
                         fileName: "[project]/src/components/CourseResults.tsx",
-                        lineNumber: 22,
+                        lineNumber: 30,
                         columnNumber: 15
                     }, this)
                 ]
             }, index, true, {
                 fileName: "[project]/src/components/CourseResults.tsx",
-                lineNumber: 14,
+                lineNumber: 16,
                 columnNumber: 13
             }, this))
     }, void 0, false, {
         fileName: "[project]/src/components/CourseResults.tsx",
-        lineNumber: 10,
+        lineNumber: 9,
         columnNumber: 5
     }, this);
 }
@@ -206,18 +205,18 @@ function CourseSearchPage() {
         setLoading(false);
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "min-h-[95vh] relative",
+        className: "min-h-[70vh] w-full flex flex-col items-center justify-start",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "w-full",
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "search-container",
+                    className: "w-full",
                     "aria-label": "Course recommendation container",
                     children: !submittedBlurb && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$BlurbInput$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["BlurbInput"], {
                         onSubmit: handleBlurbSubmit
                     }, void 0, false, {
                         fileName: "[project]/src/components/CourseSearchPage.tsx",
-                        lineNumber: 75,
+                        lineNumber: 72,
                         columnNumber: 31
                     }, this)
                 }, void 0, false, {
@@ -226,19 +225,16 @@ function CourseSearchPage() {
                     columnNumber: 9
                 }, this),
                 submittedBlurb && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    style: {
-                        marginTop: "1rem",
-                        textAlign: "center"
-                    },
+                    className: "mt-6 text-center",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                            className: "results-message",
+                            className: "text-base text-neutral-700 mb-2",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
                                     children: "These are your results for:"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CourseSearchPage.tsx",
-                                    lineNumber: 81,
+                                    lineNumber: 78,
                                     columnNumber: 15
                                 }, this),
                                 ' "',
@@ -247,41 +243,43 @@ function CourseSearchPage() {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CourseSearchPage.tsx",
-                            lineNumber: 80,
+                            lineNumber: 77,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                             onClick: handleNewSearch,
-                            className: "border px-4 py-2 rounded hover:bg-gray-100",
+                            className: "inline-block bg-neutral-100 hover:bg-neutral-200 text-neutral-800 font-medium px-4 py-2 rounded-lg border border-neutral-300 shadow-sm transition mt-2",
                             "aria-label": "Start a new course search",
                             children: "New Search"
                         }, void 0, false, {
                             fileName: "[project]/src/components/CourseSearchPage.tsx",
-                            lineNumber: 83,
+                            lineNumber: 80,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/CourseSearchPage.tsx",
-                    lineNumber: 79,
+                    lineNumber: 76,
                     columnNumber: 11
                 }, this),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("hr", {}, void 0, false, {
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("hr", {
+                    className: "my-8 border-neutral-200"
+                }, void 0, false, {
                     fileName: "[project]/src/components/CourseSearchPage.tsx",
-                    lineNumber: 93,
+                    lineNumber: 90,
                     columnNumber: 9
                 }, this),
                 loading && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "loading-message",
+                    className: "text-blue-600 text-center font-medium animate-pulse",
                     "aria-live": "polite",
                     children: "Finding courses for you..."
                 }, void 0, false, {
                     fileName: "[project]/src/components/CourseSearchPage.tsx",
-                    lineNumber: 96,
+                    lineNumber: 93,
                     columnNumber: 11
                 }, this),
                 error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "error-message",
+                    className: "text-red-600 text-center font-semibold mt-4",
                     "aria-live": "assertive",
                     children: error
                 }, void 0, false, {
@@ -290,14 +288,14 @@ function CourseSearchPage() {
                     columnNumber: 11
                 }, this),
                 !loading && submittedBlurb && courses.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "no-results-message",
+                    className: "text-center text-neutral-600 mt-6",
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
                                 children: "No courses found for:"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/CourseSearchPage.tsx",
-                                lineNumber: 110,
+                                lineNumber: 113,
                                 columnNumber: 15
                             }, this),
                             ' "',
@@ -306,44 +304,44 @@ function CourseSearchPage() {
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/CourseSearchPage.tsx",
-                        lineNumber: 109,
+                        lineNumber: 112,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/CourseSearchPage.tsx",
-                    lineNumber: 108,
+                    lineNumber: 111,
                     columnNumber: 11
                 }, this),
                 !submittedBlurb && courses.length === 0 && !loading && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "example-message",
+                    className: "text-center text-neutral-500 mt-6",
                     "aria-label": "Example blurb",
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("em", {
                             children: 'Try typing something like: "I want an Economics Class"'
                         }, void 0, false, {
                             fileName: "[project]/src/components/CourseSearchPage.tsx",
-                            lineNumber: 118,
+                            lineNumber: 124,
                             columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/CourseSearchPage.tsx",
-                        lineNumber: 117,
+                        lineNumber: 123,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/CourseSearchPage.tsx",
-                    lineNumber: 116,
+                    lineNumber: 119,
                     columnNumber: 11
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CourseResults$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CourseResults"], {
                     courses: courses
                 }, void 0, false, {
                     fileName: "[project]/src/components/CourseSearchPage.tsx",
-                    lineNumber: 123,
+                    lineNumber: 129,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "text-center mt-8 text-sm text-gray-500",
+                    className: "text-center mt-12 text-sm text-neutral-400",
                     children: [
                         "Not finding what you're looking for? You can also browse the",
                         " ",
@@ -355,14 +353,14 @@ function CourseSearchPage() {
                             children: "Courses at Brown (CAB) website"
                         }, void 0, false, {
                             fileName: "[project]/src/components/CourseSearchPage.tsx",
-                            lineNumber: 127,
+                            lineNumber: 133,
                             columnNumber: 11
                         }, this),
                         "."
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/CourseSearchPage.tsx",
-                    lineNumber: 125,
+                    lineNumber: 131,
                     columnNumber: 9
                 }, this)
             ]
@@ -398,37 +396,46 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CourseS
 "use client";
 ;
 ;
-;
 /**
  * This is the highest level of the Course Recommendation Application
  */ function App() {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "App",
+        className: "flex flex-col items-center gap-8",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "App-header",
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                    "aria-label": "Course Recommendation Application",
-                    children: "Brown Course Finder"
-                }, void 0, false, {
-                    fileName: "[project]/src/components/App.tsx",
-                    lineNumber: 12,
-                    columnNumber: 9
-                }, this)
-            }, void 0, false, {
+                className: "w-full text-center mt-4",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
+                        className: "text-3xl sm:text-4xl font-extrabold tracking-tight text-neutral-900 mb-2 drop-shadow-sm",
+                        children: "Brown Course Finder"
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/App.tsx",
+                        lineNumber: 11,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        className: "text-neutral-600 text-base sm:text-lg max-w-xl mx-auto",
+                        children: "Find the perfect Brown course for your interests and goals."
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/App.tsx",
+                        lineNumber: 14,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
                 fileName: "[project]/src/components/App.tsx",
-                lineNumber: 11,
+                lineNumber: 10,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CourseSearchPage$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CourseSearchPage"], {}, void 0, false, {
                 fileName: "[project]/src/components/App.tsx",
-                lineNumber: 16,
+                lineNumber: 18,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/App.tsx",
-        lineNumber: 10,
+        lineNumber: 9,
         columnNumber: 5
     }, this);
 }

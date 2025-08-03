@@ -25,9 +25,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-neutral-900 min-h-screen`}
       >
-        {children}
+        <header className="sticky top-0 z-30 w-full bg-white/80 backdrop-blur border-b border-neutral-200 shadow-sm">
+          <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+            <span className="text-2xl font-bold tracking-tight">
+              Brown Courses
+            </span>
+            {/* Future nav or actions can go here */}
+          </div>
+        </header>
+        <main className="max-w-7xl mx-auto px-4 py-8">{children}</main>
       </body>
     </html>
   );

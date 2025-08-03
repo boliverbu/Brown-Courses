@@ -66,23 +66,20 @@ export function CourseSearchPage() {
   };
 
   return (
-    <div className="min-h-[95vh] relative">
+    <div className="min-h-[70vh] w-full flex flex-col items-center justify-start">
       <div className="w-full">
-        <div
-          className="search-container"
-          aria-label="Course recommendation container"
-        >
+        <div className="w-full" aria-label="Course recommendation container">
           {!submittedBlurb && <BlurbInput onSubmit={handleBlurbSubmit} />}
         </div>
 
         {submittedBlurb && (
-          <div style={{ marginTop: "1rem", textAlign: "center" }}>
-            <p className="results-message">
+          <div className="mt-6 text-center">
+            <p className="text-base text-neutral-700 mb-2">
               <strong>These are your results for:</strong> "{submittedBlurb}"
             </p>
             <button
               onClick={handleNewSearch}
-              className="border px-4 py-2 rounded hover:bg-gray-100"
+              className="inline-block bg-neutral-100 hover:bg-neutral-200 text-neutral-800 font-medium px-4 py-2 rounded-lg border border-neutral-300 shadow-sm transition mt-2"
               aria-label="Start a new course search"
             >
               New Search
@@ -90,22 +87,28 @@ export function CourseSearchPage() {
           </div>
         )}
 
-        <hr />
+        <hr className="my-8 border-neutral-200" />
 
         {loading && (
-          <div className="loading-message" aria-live="polite">
+          <div
+            className="text-blue-600 text-center font-medium animate-pulse"
+            aria-live="polite"
+          >
             Finding courses for you...
           </div>
         )}
 
         {error && (
-          <div className="error-message" aria-live="assertive">
+          <div
+            className="text-red-600 text-center font-semibold mt-4"
+            aria-live="assertive"
+          >
             {error}
           </div>
         )}
 
         {!loading && submittedBlurb && courses.length === 0 && (
-          <div className="no-results-message">
+          <div className="text-center text-neutral-600 mt-6">
             <p>
               <strong>No courses found for:</strong> "{submittedBlurb}"
             </p>
@@ -113,7 +116,10 @@ export function CourseSearchPage() {
         )}
 
         {!submittedBlurb && courses.length === 0 && !loading && (
-          <div className="example-message" aria-label="Example blurb">
+          <div
+            className="text-center text-neutral-500 mt-6"
+            aria-label="Example blurb"
+          >
             <p>
               <em>Try typing something like: "I want an Economics Class"</em>
             </p>
@@ -122,7 +128,7 @@ export function CourseSearchPage() {
 
         <CourseResults courses={courses} />
 
-        <div className="text-center mt-8 text-sm text-gray-500">
+        <div className="text-center mt-12 text-sm text-neutral-400">
           Not finding what you're looking for? You can also browse the{" "}
           <a
             href="https://cab.brown.edu/"
