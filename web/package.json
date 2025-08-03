@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@pinecone-database/pinecone": "^6.1.2",
+    "@vercel/analytics": "^1.5.0",
     "axios": "^1.11.0",
     "google-auth-library": "^10.2.0",
     "next": "15.4.5",
