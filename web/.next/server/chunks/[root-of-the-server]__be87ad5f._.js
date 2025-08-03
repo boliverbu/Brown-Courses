@@ -224,7 +224,6 @@ const PINECONE_INDEX = process.env.PINECONE_INDEX;
 const GEMINI_PROJECT_ID = process.env.GEMINI_PROJECT_ID;
 const GEMINI_LOCATION = process.env.GEMINI_LOCATION;
 const GEMINI_MODEL = process.env.GEMINI_MODEL;
-const VERTEX_KEY_PATH = process.env.VERTEX_KEY_PATH;
 async function getGeminiAccessToken() {
     const auth = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$google$2d$auth$2d$library$2f$build$2f$src$2f$index$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["GoogleAuth"]({
         credentials: {

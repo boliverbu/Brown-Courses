@@ -11,7 +11,6 @@ const PINECONE_INDEX = process.env.PINECONE_INDEX!;
 const GEMINI_PROJECT_ID = process.env.GEMINI_PROJECT_ID!;
 const GEMINI_LOCATION = process.env.GEMINI_LOCATION!;
 const GEMINI_MODEL = process.env.GEMINI_MODEL!;
-const VERTEX_KEY_PATH = process.env.VERTEX_KEY_PATH!;
 
 async function getGeminiAccessToken() {
   const auth = new GoogleAuth({

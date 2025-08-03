@@ -1,5 +1,0 @@
-fastapi
-uvicorn
-scikit-learn
-sentence-transformers
-torch==2.1.0

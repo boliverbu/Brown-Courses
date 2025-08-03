@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "@pinecone-database/pinecone": "^6.1.2",
-    "axios": "^1.11.0",
-    "google-auth-library": "^10.2.0"
-  }
-}
