@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Pinecone } from "@pinecone-database/pinecone";
+import {
+  Pinecone,
+  type ScoredPineconeRecord,
+} from "@pinecone-database/pinecone";
 import axios from "axios";
 import { GoogleAuth } from "google-auth-library";
 
@@ -46,7 +49,11 @@ export async function POST(req: NextRequest) {
 
     // 2. Query Pinecone
     const pinecone = new Pinecone({ apiKey: PINECONE_API_KEY });
-    const index = pinecone.index(PINECONE_INDEX);
+    const index = pinecone.index<{
+      title: string;
+      department: string;
+      description: string;
+    }>(PINECONE_INDEX);
 
     const queryResponse = await index.query({
       vector: embedding,
@@ -55,19 +62,29 @@ export async function POST(req: NextRequest) {
     });
 
     // 3. Format and return results
-    const results = queryResponse.matches.map((match: any) => ({
-      id: match.id,
-      title: match.metadata.title,
-      department: match.metadata.department,
-      description: match.metadata.description,
-      score: match.score,
-    }));
+    const results = queryResponse.matches.map(
+      (
+        match: ScoredPineconeRecord<{
+          title: string;
+          department: string;
+          description: string;
+        }>
+      ) => ({
+        id: match.id,
+        title: match.metadata?.title ?? "",
+        department: match.metadata?.department ?? "",
+        description: match.metadata?.description ?? "",
+        score: match.score,
+      })
+    );
 
     return NextResponse.json({ results });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("API error:", error);
     return NextResponse.json(
-      { error: error.message || "Internal server error" },
+      {
+        error: error instanceof Error ? error.message : "Internal server error",
+      },
       { status: 500 }
     );
   }

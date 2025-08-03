@@ -216,12 +216,12 @@ function CourseSearchPage() {
                         onSubmit: handleBlurbSubmit
                     }, void 0, false, {
                         fileName: "[project]/src/components/CourseSearchPage.tsx",
-                        lineNumber: 72,
+                        lineNumber: 80,
                         columnNumber: 31
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/CourseSearchPage.tsx",
-                    lineNumber: 71,
+                    lineNumber: 79,
                     columnNumber: 9
                 }, this),
                 submittedBlurb && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -234,7 +234,7 @@ function CourseSearchPage() {
                                     children: "These are your results for:"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CourseSearchPage.tsx",
-                                    lineNumber: 78,
+                                    lineNumber: 86,
                                     columnNumber: 15
                                 }, this),
                                 ' "',
@@ -243,7 +243,7 @@ function CourseSearchPage() {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CourseSearchPage.tsx",
-                            lineNumber: 77,
+                            lineNumber: 85,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -253,20 +253,20 @@ function CourseSearchPage() {
                             children: "New Search"
                         }, void 0, false, {
                             fileName: "[project]/src/components/CourseSearchPage.tsx",
-                            lineNumber: 80,
+                            lineNumber: 89,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/CourseSearchPage.tsx",
-                    lineNumber: 76,
+                    lineNumber: 84,
                     columnNumber: 11
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("hr", {
                     className: "my-8 border-neutral-200"
                 }, void 0, false, {
                     fileName: "[project]/src/components/CourseSearchPage.tsx",
-                    lineNumber: 90,
+                    lineNumber: 99,
                     columnNumber: 9
                 }, this),
                 loading && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -275,7 +275,7 @@ function CourseSearchPage() {
                     children: "Finding courses for you..."
                 }, void 0, false, {
                     fileName: "[project]/src/components/CourseSearchPage.tsx",
-                    lineNumber: 93,
+                    lineNumber: 102,
                     columnNumber: 11
                 }, this),
                 error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -284,7 +284,7 @@ function CourseSearchPage() {
                     children: error
                 }, void 0, false, {
                     fileName: "[project]/src/components/CourseSearchPage.tsx",
-                    lineNumber: 102,
+                    lineNumber: 111,
                     columnNumber: 11
                 }, this),
                 !loading && submittedBlurb && courses.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -295,7 +295,7 @@ function CourseSearchPage() {
                                 children: "No courses found for:"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/CourseSearchPage.tsx",
-                                lineNumber: 113,
+                                lineNumber: 122,
                                 columnNumber: 15
                             }, this),
                             ' "',
@@ -304,12 +304,12 @@ function CourseSearchPage() {
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/CourseSearchPage.tsx",
-                        lineNumber: 112,
+                        lineNumber: 121,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/CourseSearchPage.tsx",
-                    lineNumber: 111,
+                    lineNumber: 120,
                     columnNumber: 11
                 }, this),
                 !submittedBlurb && courses.length === 0 && !loading && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -320,24 +320,24 @@ function CourseSearchPage() {
                             children: 'Try typing something like: "I want an Economics Class"'
                         }, void 0, false, {
                             fileName: "[project]/src/components/CourseSearchPage.tsx",
-                            lineNumber: 124,
+                            lineNumber: 134,
                             columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/CourseSearchPage.tsx",
-                        lineNumber: 123,
+                        lineNumber: 133,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/CourseSearchPage.tsx",
-                    lineNumber: 119,
+                    lineNumber: 129,
                     columnNumber: 11
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CourseResults$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CourseResults"], {
                     courses: courses
                 }, void 0, false, {
                     fileName: "[project]/src/components/CourseSearchPage.tsx",
-                    lineNumber: 129,
+                    lineNumber: 141,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -353,25 +353,25 @@ function CourseSearchPage() {
                             children: "Courses at Brown (CAB) website"
                         }, void 0, false, {
                             fileName: "[project]/src/components/CourseSearchPage.tsx",
-                            lineNumber: 133,
+                            lineNumber: 145,
                             columnNumber: 11
                         }, this),
                         "."
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/CourseSearchPage.tsx",
-                    lineNumber: 131,
+                    lineNumber: 143,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/components/CourseSearchPage.tsx",
-            lineNumber: 70,
+            lineNumber: 78,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/components/CourseSearchPage.tsx",
-        lineNumber: 69,
+        lineNumber: 77,
         columnNumber: 5
     }, this);
 }

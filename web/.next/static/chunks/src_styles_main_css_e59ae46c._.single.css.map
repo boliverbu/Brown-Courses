@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/src/styles/main.css"],"sourcesContent":["/* CSS for Main Select interface */\n\n.select {\n  position: relative;\n  min-height: 95vh;\n}\n\n.select-history {\n  height: 55vh;\n  margin: auto;\n  display: block;\n  overflow: scroll;\n}\n\n.dropdown {\n  width: 10vw;\n  margin: 10px;\n  cursor: pointer;\n}\n\n.dropdown > option {\n  text-align: center;\n}\n\n/** TODO 3: change the CSS on the submit button to ensure it's centered! **/\n"],"names":[],"mappings":"AAEA;;;;;AAKA;;;;;;;AAOA;;;;;;AAMA"}}]
-}

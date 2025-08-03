@@ -269,9 +269,9 @@ async function POST(req) {
         // 3. Format and return results
         const results = queryResponse.matches.map((match)=>({
                 id: match.id,
-                title: match.metadata.title,
-                department: match.metadata.department,
-                description: match.metadata.description,
+                title: match.metadata?.title ?? "",
+                department: match.metadata?.department ?? "",
+                description: match.metadata?.description ?? "",
                 score: match.score
             }));
         return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
@@ -280,7 +280,7 @@ async function POST(req) {
     } catch (error) {
         console.error("API error:", error);
         return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
-            error: error.message || "Internal server error"
+            error: error instanceof Error ? error.message : "Internal server error"
         }, {
             status: 500
         });

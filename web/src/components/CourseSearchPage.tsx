@@ -13,6 +13,14 @@ export interface Course {
 
 const useMockData = false;
 
+// Define a type for course entry
+interface CourseEntry {
+  id: string;
+  title: string;
+  department: string;
+  description?: string;
+}
+
 export function CourseSearchPage() {
   const [courses, setCourses] = useState<Course[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -41,7 +49,7 @@ export function CourseSearchPage() {
         if (!response.ok) throw new Error("Server error");
 
         const result = await response.json();
-        const parsedCourses = result.results.map((entry: any) => ({
+        const parsedCourses = result.results.map((entry: CourseEntry) => ({
           id: entry.id,
           title: entry.title,
           department: entry.department,
@@ -75,7 +83,8 @@ export function CourseSearchPage() {
         {submittedBlurb && (
           <div className="mt-6 text-center">
             <p className="text-base text-neutral-700 mb-2">
-              <strong>These are your results for:</strong> "{submittedBlurb}"
+              <strong>These are your results for:</strong> &quot;
+              {submittedBlurb}&quot;
             </p>
             <button
               onClick={handleNewSearch}
@@ -110,7 +119,8 @@ export function CourseSearchPage() {
         {!loading && submittedBlurb && courses.length === 0 && (
           <div className="text-center text-neutral-600 mt-6">
             <p>
-              <strong>No courses found for:</strong> "{submittedBlurb}"
+              <strong>No courses found for:</strong> &quot;{submittedBlurb}
+              &quot;
             </p>
           </div>
         )}
@@ -121,7 +131,9 @@ export function CourseSearchPage() {
             aria-label="Example blurb"
           >
             <p>
-              <em>Try typing something like: "I want an Economics Class"</em>
+              <em>
+                Try typing something like: &quot;I want an Economics Class&quot;
+              </em>
             </p>
           </div>
         )}
@@ -129,7 +141,7 @@ export function CourseSearchPage() {
         <CourseResults courses={courses} />
 
         <div className="text-center mt-12 text-sm text-neutral-400">
-          Not finding what you're looking for? You can also browse the{" "}
+          Not finding what you&apos;re looking for? You can also browse the{" "}
           <a
             href="https://cab.brown.edu/"
             target="_blank"
