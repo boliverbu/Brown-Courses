@@ -34,16 +34,7 @@ export function CourseSearchPage() {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [submittedBlurb, setSubmittedBlurb] = useState<string>("");
-  const [selectedDepartment, setSelectedDepartment] = useState<string>("");
   const [sortBy, setSortBy] = useState<SortBy>("relevance");
-
-  const availableDepartments = useMemo(() => {
-    const set = new Set<string>();
-    for (const c of courses) {
-      if (c.department) set.add(c.department);
-    }
-    return Array.from(set).sort();
-  }, [courses]);
 
   function parseCourseNumber(courseId: string): number | null {
     // Extract the last numeric chunk from the ID, e.g., "CSCI 0160" -> 160
@@ -63,9 +54,7 @@ export function CourseSearchPage() {
   }
 
   const displayedCourses = useMemo(() => {
-    const filtered = selectedDepartment
-      ? courses.filter((c) => c.department === selectedDepartment)
-      : courses.slice();
+    const filtered = courses.slice();
 
     if (sortBy === "relevance") return filtered;
 
@@ -80,7 +69,7 @@ export function CourseSearchPage() {
         return sortBy === "level_asc" ? aNum - bNum : bNum - aNum;
       })
       .map((x) => x.course);
-  }, [courses, selectedDepartment, sortBy]);
+  }, [courses, sortBy]);
 
   const handleBlurbSubmit = async (
     blurb: string,
@@ -135,7 +124,6 @@ export function CourseSearchPage() {
     setCourses([]);
     setError(null);
     setLoading(false);
-    setSelectedDepartment("");
     setSortBy("relevance");
   };
 
@@ -206,23 +194,6 @@ export function CourseSearchPage() {
 
         {courses.length > 0 && (
           <div className="mb-4 flex flex-wrap items-center gap-3">
-            <label htmlFor="dept-filter" className="text-sm text-neutral-700">
-              Department
-            </label>
-            <select
-              id="dept-filter"
-              className="border border-neutral-300 bg-white text-neutral-800 text-sm rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              value={selectedDepartment}
-              onChange={(e) => setSelectedDepartment(e.target.value)}
-            >
-              <option value="">All</option>
-              {availableDepartments.map((dept) => (
-                <option key={dept} value={dept}>
-                  {dept}
-                </option>
-              ))}
-            </select>
-
             <label
               htmlFor="sort-filter"
               className="ml-2 text-sm text-neutral-700"
