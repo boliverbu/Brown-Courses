@@ -16,6 +16,8 @@ export interface Course {
 
 const useMockData = false;
 
+type SortBy = "relevance" | "level_asc" | "level_desc";
+
 // Define a type for course entry
 interface CourseEntry {
   id: string;
@@ -33,9 +35,7 @@ export function CourseSearchPage() {
   const [loading, setLoading] = useState<boolean>(false);
   const [submittedBlurb, setSubmittedBlurb] = useState<string>("");
   const [selectedDepartment, setSelectedDepartment] = useState<string>("");
-  const [sortBy, setSortBy] = useState<
-    "relevance" | "level_asc" | "level_desc"
-  >("relevance");
+  const [sortBy, setSortBy] = useState<SortBy>("relevance");
 
   const availableDepartments = useMemo(() => {
     const set = new Set<string>();
@@ -54,6 +54,12 @@ export function CourseSearchPage() {
     } catch {
       return null;
     }
+  }
+
+  function isSortBy(value: string): value is SortBy {
+    return (
+      value === "relevance" || value === "level_asc" || value === "level_desc"
+    );
   }
 
   const displayedCourses = useMemo(() => {
@@ -227,7 +233,10 @@ export function CourseSearchPage() {
               id="sort-filter"
               className="border border-neutral-300 bg-white text-neutral-800 text-sm rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={sortBy}
-              onChange={(e) => setSortBy(e.target.value as any)}
+              onChange={(e) => {
+                const v = e.target.value;
+                if (isSortBy(v)) setSortBy(v);
+              }}
             >
               <option value="relevance">Relevance</option>
               <option value="level_asc">
