@@ -45,7 +45,7 @@ async function getGeminiEmbedding(text: string) {
 
 export async function POST(req: NextRequest) {
   try {
-    const { user_blurb, num_courses = 10 } = await req.json();
+    const { user_blurb, num_courses = 10, departments } = await req.json();
 
     // 1. Get embedding for user blurb
     const embedding = await getGeminiEmbedding(user_blurb);
@@ -56,12 +56,21 @@ export async function POST(req: NextRequest) {
       title: string;
       department: string;
       description: string;
+      prerequisites?: string;
+      max_enrollment?: number;
+      seats_available?: number;
     }>(PINECONE_INDEX);
+
+    const filter =
+      Array.isArray(departments) && departments.length > 0
+        ? { department: { $in: departments } }
+        : undefined;
 
     const queryResponse = await index.query({
       vector: embedding,
       topK: num_courses,
       includeMetadata: true,
+      filter,
     });
 
     // 3. Format and return results
@@ -71,12 +80,18 @@ export async function POST(req: NextRequest) {
           title: string;
           department: string;
           description: string;
+          prerequisites?: string;
+          max_enrollment?: number;
+          seats_available?: number;
         }>
       ) => ({
         id: match.id,
         title: match.metadata?.title ?? "",
         department: match.metadata?.department ?? "",
         description: match.metadata?.description ?? "",
+        prerequisites: match.metadata?.prerequisites ?? "",
+        max_enrollment: match.metadata?.max_enrollment ?? null,
+        seats_available: match.metadata?.seats_available ?? null,
         score: match.score,
       })
     );

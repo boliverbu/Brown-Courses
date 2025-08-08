@@ -21,15 +21,32 @@ export function CourseResults({ courses }: CourseResultsProps) {
               <h2 className="text-lg font-bold text-neutral-900 mb-1">
                 {course.title}
               </h2>
-              <h4 className="text-xs text-neutral-500 font-mono">
+              <div className="text-xs text-neutral-600 font-mono mb-1">
                 {course.id}
-              </h4>
-              <h3 className="text-sm text-blue-700 font-semibold mb-1">
-                {course.department}
-              </h3>
+              </div>
+              <div className="text-xs text-neutral-600 mt-1 flex gap-3">
+                <span>
+                  <span className="font-semibold">Max: </span>
+                  {course.max_enrollment != null
+                    ? course.max_enrollment
+                    : "Uncapped"}
+                </span>
+                {course.seats_available != null && (
+                  <span>
+                    <span className="font-semibold">Seats: </span>
+                    {course.seats_available}
+                  </span>
+                )}
+              </div>
               <p className="text-neutral-700 text-sm">
                 {course.description || "No description available."}
               </p>
+              {course.prerequisites && (
+                <div className="text-xs text-neutral-600 mt-2">
+                  <span className="font-semibold">Prerequisites: </span>
+                  <span>{course.prerequisites}</span>
+                </div>
+              )}
             </div>
           ))}
     </div>

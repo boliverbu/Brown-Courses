@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import "../styles/main.css";
 import { BlurbInput } from "./BlurbInput";
 import { CourseResults } from "./CourseResults";
@@ -9,6 +9,9 @@ export interface Course {
   department: string;
   description: string;
   id: string;
+  prerequisites?: string;
+  max_enrollment?: number | null;
+  seats_available?: number | null;
 }
 
 const useMockData = false;
@@ -19,6 +22,9 @@ interface CourseEntry {
   title: string;
   department: string;
   description?: string;
+  prerequisites?: string;
+  max_enrollment?: number | null;
+  seats_available?: number | null;
 }
 
 export function CourseSearchPage() {
@@ -26,8 +32,22 @@ export function CourseSearchPage() {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [submittedBlurb, setSubmittedBlurb] = useState<string>("");
+  const [selectedDepartment, setSelectedDepartment] = useState<string>("");
 
-  const handleBlurbSubmit = async (blurb: string) => {
+  const availableDepartments = useMemo(() => {
+    const set = new Set<string>();
+    for (const c of courses) {
+      if (c.department) set.add(c.department);
+    }
+    return Array.from(set).sort();
+  }, [courses]);
+
+  const displayedCourses = useMemo(() => {
+    if (!selectedDepartment) return courses;
+    return courses.filter((c) => c.department === selectedDepartment);
+  }, [courses, selectedDepartment]);
+
+  const handleBlurbSubmit = async (blurb: string, departments: string[]) => {
     setSubmittedBlurb(blurb);
     setError(null);
     setCourses([]);
@@ -43,6 +63,7 @@ export function CourseSearchPage() {
           body: JSON.stringify({
             user_blurb: blurb,
             num_courses: 10,
+            departments,
           }),
         });
 
@@ -54,6 +75,9 @@ export function CourseSearchPage() {
           title: entry.title,
           department: entry.department,
           description: entry.description || "No description provided",
+          prerequisites: entry.prerequisites || "",
+          max_enrollment: entry.max_enrollment ?? null,
+          seats_available: entry.seats_available ?? null,
         }));
 
         setCourses(parsedCourses);
@@ -71,6 +95,7 @@ export function CourseSearchPage() {
     setCourses([]);
     setError(null);
     setLoading(false);
+    setSelectedDepartment("");
   };
 
   return (
@@ -138,7 +163,28 @@ export function CourseSearchPage() {
           </div>
         )}
 
-        <CourseResults courses={courses} />
+        {courses.length > 0 && (
+          <div className="mb-4 flex items-center gap-3">
+            <label htmlFor="dept-filter" className="text-sm text-neutral-700">
+              Department
+            </label>
+            <select
+              id="dept-filter"
+              className="border border-neutral-300 bg-white text-neutral-800 text-sm rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              value={selectedDepartment}
+              onChange={(e) => setSelectedDepartment(e.target.value)}
+            >
+              <option value="">All</option>
+              {availableDepartments.map((dept) => (
+                <option key={dept} value={dept}>
+                  {dept}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
+
+        <CourseResults courses={displayedCourses} />
 
         <div className="text-center mt-12 text-sm text-neutral-400">
           Not finding what you&apos;re looking for? You can also browse the{" "}

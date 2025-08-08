@@ -1,17 +1,29 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface BlurbInputProps {
-  onSubmit: (blurb: string) => void;
+  onSubmit: (blurb: string, departments: string[]) => void;
 }
 
 export function BlurbInput({ onSubmit }: BlurbInputProps) {
   const [inputValue, setInputValue] = useState("");
+  const [availableDepartments, setAvailableDepartments] = useState<string[]>(
+    []
+  );
+  const [selectedDepartments, setSelectedDepartments] = useState<string[]>([]);
+
+  useEffect(() => {
+    fetch("/departments.json")
+      .then((r) => r.json())
+      .then((list: string[]) => setAvailableDepartments(list))
+      .catch(() => setAvailableDepartments([]));
+  }, []);
 
   const handleSubmit = () => {
     if (inputValue.trim() !== "") {
-      onSubmit(inputValue.trim());
+      onSubmit(inputValue.trim(), selectedDepartments);
       setInputValue("");
+      setSelectedDepartments([]);
     }
   };
 
@@ -28,6 +40,35 @@ export function BlurbInput({ onSubmit }: BlurbInputProps) {
         aria-label="Course description input"
         rows={4}
       />
+      {availableDepartments.length > 0 && (
+        <div className="w-full flex flex-col gap-2">
+          <span className="text-sm text-neutral-700">
+            Departments (optional)
+          </span>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 border border-neutral-200 rounded-lg p-3 max-h-56 overflow-auto">
+            {availableDepartments.map((dept) => {
+              const checked = selectedDepartments.includes(dept);
+              return (
+                <label key={dept} className="flex items-center gap-2 text-sm">
+                  <input
+                    type="checkbox"
+                    className="h-4 w-4"
+                    checked={checked}
+                    onChange={(e) => {
+                      setSelectedDepartments((prev) =>
+                        e.target.checked
+                          ? [...prev, dept]
+                          : prev.filter((d) => d !== dept)
+                      );
+                    }}
+                  />
+                  <span>{dept}</span>
+                </label>
+              );
+            })}
+          </div>
+        </div>
+      )}
       <button
         className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-lg shadow transition disabled:opacity-50 disabled:cursor-not-allowed"
         onClick={handleSubmit}
