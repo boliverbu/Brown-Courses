@@ -12,6 +12,11 @@ const GEMINI_PROJECT_ID = process.env.GEMINI_PROJECT_ID!;
 const GEMINI_LOCATION = process.env.GEMINI_LOCATION!;
 const GEMINI_MODEL = process.env.GEMINI_MODEL!;
 
+type MetadataFilter = {
+  department?: { $in: string[] };
+  level_band?: { $in: string[] };
+};
+
 async function getGeminiAccessToken() {
   const auth = new GoogleAuth({
     credentials: {
@@ -68,13 +73,14 @@ export async function POST(req: NextRequest) {
       level_band?: string;
     }>(PINECONE_INDEX);
 
-    let filter: Record<string, unknown> | undefined = undefined;
+    let filter: MetadataFilter | undefined = undefined;
     const hasDepartments = Array.isArray(departments) && departments.length > 0;
     const hasLevels = Array.isArray(levels) && levels.length > 0;
     if (hasDepartments || hasLevels) {
-      filter = {};
-      if (hasDepartments) (filter as any).department = { $in: departments };
-      if (hasLevels) (filter as any).level_band = { $in: levels };
+      const f: MetadataFilter = {};
+      if (hasDepartments) f.department = { $in: departments as string[] };
+      if (hasLevels) f.level_band = { $in: levels as string[] };
+      filter = f;
     }
 
     const queryResponse = await index.query({
