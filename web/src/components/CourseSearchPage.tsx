@@ -33,6 +33,9 @@ export function CourseSearchPage() {
   const [loading, setLoading] = useState<boolean>(false);
   const [submittedBlurb, setSubmittedBlurb] = useState<string>("");
   const [selectedDepartment, setSelectedDepartment] = useState<string>("");
+  const [sortBy, setSortBy] = useState<
+    "relevance" | "level_asc" | "level_desc"
+  >("relevance");
 
   const availableDepartments = useMemo(() => {
     const set = new Set<string>();
@@ -42,12 +45,42 @@ export function CourseSearchPage() {
     return Array.from(set).sort();
   }, [courses]);
 
-  const displayedCourses = useMemo(() => {
-    if (!selectedDepartment) return courses;
-    return courses.filter((c) => c.department === selectedDepartment);
-  }, [courses, selectedDepartment]);
+  function parseCourseNumber(courseId: string): number | null {
+    // Extract the last numeric chunk from the ID, e.g., "CSCI 0160" -> 160
+    const match = courseId.match(/(\d{1,4})(?!.*\d)/);
+    if (!match) return null;
+    try {
+      return parseInt(match[1], 10);
+    } catch {
+      return null;
+    }
+  }
 
-  const handleBlurbSubmit = async (blurb: string, departments: string[]) => {
+  const displayedCourses = useMemo(() => {
+    const filtered = selectedDepartment
+      ? courses.filter((c) => c.department === selectedDepartment)
+      : courses.slice();
+
+    if (sortBy === "relevance") return filtered;
+
+    return filtered
+      .map((c) => ({
+        course: c,
+        num: parseCourseNumber(c.id),
+      }))
+      .sort((a, b) => {
+        const aNum = a.num ?? Number.POSITIVE_INFINITY;
+        const bNum = b.num ?? Number.POSITIVE_INFINITY;
+        return sortBy === "level_asc" ? aNum - bNum : bNum - aNum;
+      })
+      .map((x) => x.course);
+  }, [courses, selectedDepartment, sortBy]);
+
+  const handleBlurbSubmit = async (
+    blurb: string,
+    departments: string[],
+    levels: string[]
+  ) => {
     setSubmittedBlurb(blurb);
     setError(null);
     setCourses([]);
@@ -64,6 +97,7 @@ export function CourseSearchPage() {
             user_blurb: blurb,
             num_courses: 10,
             departments,
+            levels,
           }),
         });
 
@@ -96,6 +130,7 @@ export function CourseSearchPage() {
     setError(null);
     setLoading(false);
     setSelectedDepartment("");
+    setSortBy("relevance");
   };
 
   return (
@@ -164,7 +199,7 @@ export function CourseSearchPage() {
         )}
 
         {courses.length > 0 && (
-          <div className="mb-4 flex items-center gap-3">
+          <div className="mb-4 flex flex-wrap items-center gap-3">
             <label htmlFor="dept-filter" className="text-sm text-neutral-700">
               Department
             </label>
@@ -180,6 +215,27 @@ export function CourseSearchPage() {
                   {dept}
                 </option>
               ))}
+            </select>
+
+            <label
+              htmlFor="sort-filter"
+              className="ml-2 text-sm text-neutral-700"
+            >
+              Sort by
+            </label>
+            <select
+              id="sort-filter"
+              className="border border-neutral-300 bg-white text-neutral-800 text-sm rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value as any)}
+            >
+              <option value="relevance">Relevance</option>
+              <option value="level_asc">
+                Level (0-999, 1000-1999, 2000-2999)
+              </option>
+              <option value="level_desc">
+                Level (2000-2999, 1000-1999, 0-999)
+              </option>
             </select>
           </div>
         )}

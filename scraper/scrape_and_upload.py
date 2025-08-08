@@ -8,6 +8,7 @@ from scrape import scrape_courses
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
 load_dotenv()
+import re
 
 # --- Gemini Embedding Setup ---
 # Prefer environment variables, with safe fallbacks if provided
@@ -92,6 +93,25 @@ async def main():
         max_enrollment = course.get("max_enrollment")
         seats_available = course.get("seats_available")
         text = f"{course['title']} {course['description']} {prereq_text}"
+
+        # Derive course number and level band from ID (e.g., "CSCI 0160" -> 160)
+        course_number = None
+        level_band = None
+        try:
+            m = re.search(r"(\d{1,4})(?!.*\d)", course.get("id", ""))
+            if m:
+                course_number = int(m.group(1))
+                if 0 <= course_number <= 999:
+                    level_band = "0-999"
+                elif 1000 <= course_number <= 1999:
+                    level_band = "1000-1999"
+                elif 2000 <= course_number <= 2999:
+                    level_band = "2000-2999"
+                else:
+                    level_band = ">=3000"
+        except Exception:
+            course_number = None
+            level_band = None
         try:
             embedding = get_embedding(text)
             metadata = {
@@ -105,6 +125,10 @@ async def main():
                 metadata["max_enrollment"] = max_enrollment
             if seats_available is not None:
                 metadata["seats_available"] = seats_available
+            if course_number is not None:
+                metadata["course_number"] = course_number
+            if level_band is not None:
+                metadata["level_band"] = level_band
 
             index.upsert([
                 (

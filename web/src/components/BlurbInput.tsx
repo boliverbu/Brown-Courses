@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 
 interface BlurbInputProps {
-  onSubmit: (blurb: string, departments: string[]) => void;
+  onSubmit: (blurb: string, departments: string[], levels: string[]) => void;
 }
 
 export function BlurbInput({ onSubmit }: BlurbInputProps) {
@@ -11,6 +11,7 @@ export function BlurbInput({ onSubmit }: BlurbInputProps) {
     []
   );
   const [selectedDepartments, setSelectedDepartments] = useState<string[]>([]);
+  const [selectedLevels, setSelectedLevels] = useState<string[]>([]);
 
   useEffect(() => {
     fetch("/departments.json")
@@ -21,9 +22,10 @@ export function BlurbInput({ onSubmit }: BlurbInputProps) {
 
   const handleSubmit = () => {
     if (inputValue.trim() !== "") {
-      onSubmit(inputValue.trim(), selectedDepartments);
+      onSubmit(inputValue.trim(), selectedDepartments, selectedLevels);
       setInputValue("");
       setSelectedDepartments([]);
+      setSelectedLevels([]);
     }
   };
 
@@ -69,6 +71,33 @@ export function BlurbInput({ onSubmit }: BlurbInputProps) {
           </div>
         </div>
       )}
+      <div className="w-full flex flex-col gap-2">
+        <span className="text-sm text-neutral-700">
+          Course level (optional)
+        </span>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 border border-neutral-200 rounded-lg p-3">
+          {["0-999", "1000-1999", "2000-2999"].map((band) => {
+            const checked = selectedLevels.includes(band);
+            return (
+              <label key={band} className="flex items-center gap-2 text-sm">
+                <input
+                  type="checkbox"
+                  className="h-4 w-4"
+                  checked={checked}
+                  onChange={(e) => {
+                    setSelectedLevels((prev) =>
+                      e.target.checked
+                        ? [...prev, band]
+                        : prev.filter((b) => b !== band)
+                    );
+                  }}
+                />
+                <span>{band}</span>
+              </label>
+            );
+          })}
+        </div>
+      </div>
       <button
         className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-lg shadow transition disabled:opacity-50 disabled:cursor-not-allowed"
         onClick={handleSubmit}
