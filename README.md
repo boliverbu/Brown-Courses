@@ -2,20 +2,6 @@
 
 The **Brown Course Recommendation System** is a modern web application that helps students discover and get personalized course recommendations based on their interests, preferences, and academic goals. Built with Next.js and featuring AI-powered search capabilities, it provides an intuitive interface for exploring Brown University's course catalog.
 
----
-
-## Project Details
-
-- **Project Name**: Brown Course Recommendation System
-- **Team Members**:
-  - Oliver Tu (ostu) — Full-stack development, AI integration, and system architecture
-  - Isaac Fernandez-Lopez (iferna17) - Data Scraper and backend services
-  - Daniel Omondi (domondi1) - Frontend development and UI/UX
-- **Technology Stack**: Next.js 15, TypeScript, Tailwind CSS, Pinecone Vector Database
-- **GitHub Repository**: [https://github.com/cs0320-s25/term-project-oliver-isaac-daniel](https://github.com/cs0320-s25/term-project-oliver-isaac-daniel)
-
----
-
 ## Features
 
 - **AI-Powered Search**: Semantic search using Pinecone vector database for intelligent course matching
